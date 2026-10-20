@@ -1,0 +1,47 @@
+# EduTechReady: Apache settings for the game folder.
+# Every block is guarded, so a missing module skips the block instead of
+# failing with a 500. See docs/DEPLOY.md, "If the site answers 500".
+
+# Security headers. The pages also carry the policy as a <meta> tag;
+# the header adds frame-ancestors, which browsers ignore in a meta tag.
+<IfModule mod_headers.c>
+    Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data: blob:; style-src 'self'; script-src 'self'; connect-src 'self' blob: data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+    Header always set Referrer-Policy "no-referrer"
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Revalidate the game's files on every load (Cache-Control: no-cache), so an
+# upload or a content edit (characters.json, ui.json) reaches returning
+# browsers at once instead of after days of heuristic caching. The browser
+# keeps its copy and asks with the ETag; an unchanged file costs a 304. The
+# API sets its own no-store in PHP (lib.php).
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|js|mjs|css|json|svg|png|webp|glb)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
+
+# Deny dotfiles (.htaccess, .user.ini, editor and system leftovers) and the
+# Markdown docs that travel with the package (DEPLOY.md).
+<FilesMatch "(^\.|\.md$)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Dot directories (.git and the like) as 404. .well-known stays reachable
+# for certificate renewal.
+<IfModule mod_alias.c>
+    RedirectMatch 404 "/\.(?!well-known/)"
+</IfModule>
+
+# GLB models and WebP portraits with the right type (older Apache versions
+# do not know them).
+<IfModule mod_mime.c>
+    AddType model/gltf-binary .glb
+    AddType image/webp .webp
+</IfModule>

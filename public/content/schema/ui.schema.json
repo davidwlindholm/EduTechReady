@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ui.schema.json",
+  "title": "ui.json: the interface strings",
+  "description": "A flat object of dotted keys to Danish strings. Parameters are {name} placeholders; other curly braces are not allowed. The validator checks that every key is used in public/js and every key used there exists.",
+  "type": "object",
+  "minProperties": 1,
+  "propertyNames": { "pattern": "^[a-z][a-zA-Z0-9]*(\\.[a-zA-Z0-9]+)+$" },
+  "additionalProperties": {
+    "type": "string",
+    "minLength": 1,
+    "pattern": "^(?:[^{}]|\\{[a-zA-Z0-9_]+\\})*$"
+  }
+}

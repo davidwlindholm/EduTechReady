@@ -1,0 +1,300 @@
+{
+  "player": {
+    "model": "char_m4",
+    "materialColors": {}
+  },
+  "characters": [
+    {
+      "id": "mette",
+      "name": "Mette (Underviser)",
+      "model": "char_w1",
+      "materialColors": {
+        "Shirt": "#4a6a94",
+        "Pants": "#2e3440",
+        "Hair": "#5a3d2b",
+        "HairBase": "#5a3d2b"
+      },
+      "col": 3,
+      "row": 7,
+      "facing": "N",
+      "pose": "sit",
+      "portrait": "assets/portraits/mette.webp",
+      "summary": "Mette lader de studerende aflevere refleksioner over praktikken som lydnotater og giver feedback med lyd.",
+      "greeting": "Jeg er begyndt at lade de studerende aflevere deres refleksioner som lydnotater i stedet for skriftlige opgaver.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Hvad ændrede det for de studerende?",
+          "answer": "Opgaven er den samme. De reflekterer stadig over praktikken og afleverer til mig. Men især de ordblinde siger meget mere, end de nogensinde skrev. Og jeg svarer med et lydnotat, så de får feedback hurtigere."
+        },
+        {
+          "id": "q2",
+          "text": "Hvordan kom du i gang med det?",
+          "answer": "Jeg hopper ikke på alt nyt. Et par kolleger på finansuddannelsen havde prøvet det, så jeg spurgte dem grundigt ud og fulgte med et semester. Først da gik jeg i gang. I dag gør de fleste i afdelingen det."
+        },
+        {
+          "id": "q3",
+          "text": "Ville du vende tilbage til den gamle måde?",
+          "answer": "Nej. Næste semester vil jeg gå videre og lade dem lytte til hinandens lydnotater og give hinanden feedback i par. Men det har jeg ikke prøvet endnu."
+        }
+      ]
+    },
+    {
+      "id": "jonas",
+      "name": "Jonas (Underviser)",
+      "model": "char_m1",
+      "materialColors": {
+        "Shirt": "#5e8a4e",
+        "Hair": "#d8b45c",
+        "Pants": "#3f4f66"
+      },
+      "col": 4,
+      "row": 4,
+      "facing": "S",
+      "pose": "sit",
+      "portrait": "assets/portraits/jonas.webp",
+      "summary": "Jonas har lagt sine forelæsninger over i korte videoer og bruger timerne på gruppeopgaver med vejledning.",
+      "greeting": "Jeg har lavet mine forelæsninger om til korte videoer, som de studerende ser hjemme. Så bruger vi timerne på noget helt andet.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Hvad bruger I så timerne på?",
+          "answer": "Opgaver i grupper. Før sad de og lyttede i to timer og lavede opgaverne alene derhjemme. Nu er det vendt om. Jeg går rundt og hjælper dem, der sidder fast, og de lærer meget af hinanden."
+        },
+        {
+          "id": "q2",
+          "text": "Hvordan har dine kolleger taget imod det?",
+          "answer": "Godt, faktisk. En kollega prøvede noget lignende før mig, men opgav det. Jeg startede for fire år siden. Nu har tre kolleger kopieret mit setup, og nye undervisere bliver sendt hen til mig."
+        },
+        {
+          "id": "q3",
+          "text": "Ser de studerende overhovedet videoerne?",
+          "answer": "De fleste gør. Jeg starter hver time med en lille quiz, så de ved, at det betyder noget. Jeg prøvede det også af på ét hold i et helt semester, før jeg lagde alle mine fag om."
+        }
+      ]
+    },
+    {
+      "id": "karim",
+      "name": "Karim (Administration)",
+      "model": "char_m2",
+      "materialColors": {
+        "Skin": "#7d5236",
+        "Shirt": "#6f8fb5",
+        "Hair": "#1f1a17",
+        "Pants": "#3a3a40"
+      },
+      "col": 5,
+      "row": 6,
+      "facing": "W",
+      "pose": "sit",
+      "portrait": "assets/portraits/karim.webp",
+      "summary": "Karim bruger AI til at skrive udkast til standardbreve og påmindelser til de studerende.",
+      "greeting": "Jeg bruger AI til at skrive vores standardbreve til de studerende. Påmindelser om frister, velkomstbreve, den slags.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Hvad har det ændret for de studerende?",
+          "answer": "Ingenting, og det er meningen. Brevene ser ud præcis som før og bliver sendt samme dag som altid. Jeg bruger bare en time på dem i stedet for en hel eftermiddag."
+        },
+        {
+          "id": "q2",
+          "text": "Hvornår begyndte du med det?",
+          "answer": "Lige da ChatGPT var udkommet. Ingen her havde hørt om det endnu. Jeg følger nogle internationale fora om automatisering, så jeg prøver tit ting af længe før de andre."
+        },
+        {
+          "id": "q3",
+          "text": "Hvad siger dine kolleger til det?",
+          "answer": "De synes vist, jeg er lidt af en nørd, og der er ikke mange, der spørger mig til råds. Det går også galt engang imellem, som da min første version sendte en forkert frist til 300 studerende. Så retter jeg det og prøver igen. Men navne og personoplysninger skriver jeg aldrig ind."
+        }
+      ]
+    },
+    {
+      "id": "anne",
+      "name": "Anne (Studievejleder)",
+      "model": "char_w3",
+      "materialColors": {
+        "Skin": "#7a5236",
+        "Shirt": "#c0587a",
+        "Pants": "#3f5f8a",
+        "Hair": "#1e1714",
+        "HairBase": "#1e1714"
+      },
+      "col": 6,
+      "row": 9,
+      "facing": "N",
+      "pose": "sit",
+      "portrait": "assets/portraits/anne.webp",
+      "summary": "Anne holder vejledningssamtaler over video, blandt andet med studerende i praktik. Den første samtale foregår altid fysisk.",
+      "greeting": "Jeg holder mange af mine vejledningssamtaler over video nu. Det passer godt til de studerende, der er i praktik.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Er det ikke bare den samme samtale på en skærm?",
+          "answer": "Samtalen er den samme, ja. Men nu kan vi dele skærm og gå studieplanen igennem sammen. Og de studerende i praktik kan tage samtalen i frokostpausen i stedet for at tage en halv fridag."
+        },
+        {
+          "id": "q2",
+          "text": "Hvornår begyndte du med det?",
+          "answer": "Under corona måtte vi alle, men bagefter gik jeg straks tilbage til at mødes fysisk. Først sidste år tog jeg det op igen. De fleste af de andre vejledere havde holdt fast i det, og de studerende spurgte efter det hele tiden."
+        },
+        {
+          "id": "q3",
+          "text": "Mister I ikke noget ved ikke at mødes?",
+          "answer": "Jo, lidt. Det er sværere at mærke, når nogen har det skidt. Derfor holder jeg altid den første samtale ansigt til ansigt. Jeg var skeptisk længe, og det er jeg stadig en lille smule."
+        }
+      ]
+    },
+    {
+      "id": "sofie",
+      "name": "Sofie (Underviser)",
+      "model": "char_w4",
+      "materialColors": {
+        "Shirt": "#d8cdb9",
+        "Jacket": "#efe6d6",
+        "LightJacket": "#e3d7c3",
+        "Pants": "#2f2f36",
+        "Hair": "#6b4a32",
+        "HairBase": "#6b4a32",
+        "Eyebrows": "#4a3424"
+      },
+      "col": 7,
+      "row": 9,
+      "facing": "N",
+      "pose": "sit",
+      "portrait": "assets/portraits/sofie.webp",
+      "summary": "Sofie lægger sine kompendier på læringsplatformen som scannede PDF'er, fordi det nu er et krav.",
+      "greeting": "Jeg er ret skeptisk over for alle de nye værktøjer. Men i år har jeg lagt mine kompendier på læringsplatformen, for nu er det et krav.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Hvordan bruger du platformen?",
+          "answer": "Jeg scanner mine papirkompendier og lægger dem op som PDF. De studerende printer dem eller læser dem på skærmen. Ellers er alt som før, og det er jeg godt tilfreds med."
+        },
+        {
+          "id": "q2",
+          "text": "Hvorfor ventede du så længe?",
+          "answer": "Jeg har været her i 22 år og set tre platforme komme og gå. Hver gang mistede nogen deres materialer. Mine papirkompendier har overlevet dem alle sammen. Jeg er nok den sidste i afdelingen, der er kommet med."
+        },
+        {
+          "id": "q3",
+          "text": "Kunne du forestille dig at prøve mere?",
+          "answer": "Hvis en kollega kan vise mig, at det rent faktisk hjælper de studerende. Jeg prøvede engang et afstemningsværktøj, der gik ned midt i timen. Og jeg tror stadig, at de lærer mest, når de skriver i hånden og taler sammen."
+        }
+      ]
+    },
+    {
+      "id": "lars",
+      "name": "Lars (IT)",
+      "model": "char_m3",
+      "materialColors": {
+        "Shirt": "#55704a",
+        "Shirt2": "#55704a",
+        "Pants": "#a38f68",
+        "Hair": "#5a3f2c",
+        "Hair2": "#5a3f2c"
+      },
+      "col": 9,
+      "row": 5,
+      "facing": "N",
+      "pose": "stand",
+      "portrait": "assets/portraits/lars.webp",
+      "summary": "Lars har sat en AI-chatbot op, der besvarer de studerendes IT-spørgsmål ud fra skolens egne vejledninger.",
+      "greeting": "Kaffemaskinen er den eneste maskine her, der aldrig får opdateringer. Til gengæld har vi lige fået en AI-chatbot, der svarer de studerende på IT-spørgsmål.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Hvad gør chatbotten?",
+          "answer": "Den svarer døgnet rundt på de faste spørgsmål ud fra vores egne vejledninger, så jeg kun tager de svære sager. Hver uge læser jeg, hvad de studerende har spurgt om, og retter vejledningerne der, hvor de kører fast."
+        },
+        {
+          "id": "q2",
+          "text": "Var du ikke den første her til at bruge AI?",
+          "answer": "Tværtimod. Halvdelen af underviserne havde brugt AI i over et år, før jeg rørte det. Jeg ville vente på en godkendt løsning med styr på databeskyttelsen. Og jeg har set for mange hypede værktøjer forsvinde igen."
+        },
+        {
+          "id": "q3",
+          "text": "Hvad fik dig til at gøre det alligevel?",
+          "answer": "Ledelsen spurgte, og efterhånden brugte de fleste her AI uden problemer. Så var der ikke længere nogen god grund til at vente. Nu er jeg faktisk ret glad for den."
+        }
+      ]
+    },
+    {
+      "id": "birgitte",
+      "name": "Birgitte (Uddannelsesleder)",
+      "model": "char_w2",
+      "materialColors": {
+        "Dress": "#7d4646",
+        "Hair": "#8a5a3a"
+      },
+      "col": 6,
+      "row": 2,
+      "facing": "S",
+      "pose": "stand",
+      "portrait": "assets/portraits/birgitte.webp",
+      "summary": "Birgitte har sat et samarbejde i gang, hvor markedsføringsstuderende arbejder online sammen med et hold i Vietnam om en virksomhedscase.",
+      "greeting": "Spørg bare, men jeg er på vej til møde lige om lidt. Vores markedsføringsstuderende arbejder nu online sammen med et hold i Vietnam om den samme virksomhedscase.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Hvordan foregår samarbejdet?",
+          "answer": "De arbejder i fælles dokumenter og mødes på video hver uge. Til sidst præsenterer de deres forslag for virksomhedens ledelse online. Pludselig skal de forklare deres ideer for nogen, der ser markedet helt anderledes."
+        },
+        {
+          "id": "q2",
+          "text": "Var I de første med det?",
+          "answer": "Nej. To af de andre uddannelser her havde kørt det i et par år. Jeg var ude at se, hvordan de gjorde, og læste deres evalueringer, før vi startede med ét hold. Siden er flere uddannelser fulgt efter."
+        },
+        {
+          "id": "q3",
+          "text": "Hvad har det betydet for de studerende?",
+          "answer": "De lærer noget, vi aldrig kunne lære dem i et klasselokale i Danmark. Det nævner de i hver eneste evaluering. Men det kræver meget af underviserne, så jeg har givet dem ekstra timer til det."
+        }
+      ]
+    },
+    {
+      "id": "henrik",
+      "name": "Henrik (Pædagogisk konsulent)",
+      "model": "char_m3",
+      "materialColors": {
+        "Shirt": "#c79a3a",
+        "Shirt2": "#c79a3a",
+        "Pants": "#40444c",
+        "Hair": "#a8a59e",
+        "Hair2": "#a8a59e",
+        "Shoes": "#2b2622"
+      },
+      "col": 8,
+      "row": 1,
+      "facing": "W",
+      "pose": "stand",
+      "portrait": "assets/portraits/henrik.webp",
+      "summary": "Henrik har hjulpet et hold med at bruge en AI, der spiller direktør i casevirksomheden, så de studerende kan interviewe den.",
+      "greeting": "Hej! Jeg venter på et møde, men spørg løs. Lige nu hjælper jeg et hold med en AI, der spiller direktør i den virksomhed, de skriver opgave om.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Hvad gør de studerende med den?",
+          "answer": "De interviewer den, som om de havde direktøren i røret. Den svarer ud fra årsrapporten og virksomhedens hjemmeside. Det kunne man jo slet ikke før. De er vildt engagerede, nogle sidder og spørger i timevis."
+        },
+        {
+          "id": "q2",
+          "text": "Hvordan kom du i gang med AI?",
+          "answer": "Karim viste mig det et par måneder efter, at ChatGPT først udkom, og så gik jeg hurtigt i gang. Nu holder jeg workshops om det, og kollegerne kommer tit forbi og spørger mig, før de selv prøver noget nyt."
+        },
+        {
+          "id": "q3",
+          "text": "Er der nogen ulemper?",
+          "answer": "Ja, og dem tænker jeg meget over. Den finder nogle gange på ting. Én gruppe byggede halvdelen af deres opgave på en fabrik, som virksomheden slet ikke har. Og nogle læser ikke længere årsrapporten, de spørger bare botten."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# Nothing in this folder is ever served. Needed where the
+# folder sits inside the web root, as in the upload package.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

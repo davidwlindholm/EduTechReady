@@ -1,0 +1,19 @@
+# EduTechReady API folder.
+
+# Under mod_php, Apache refuses request bodies above 64 KiB here with its own
+# 413 before PHP starts. Under PHP-FPM behind
+# mod_proxy_fcgi this line does NOT stop .php requests (tested on Apache
+# 2.4.67): they still reach PHP, and only static files get Apache's 413; there
+# the cap has to come from PHP-FPM or the host. submit.php enforces the real
+# limit (max_body_bytes, 16 KiB by default) with a JSON 413 in every setup.
+# Keep this value above max_body_bytes. Any AllowOverride class (Limit,
+# FileInfo, AuthConfig ...) allows this line; if the API answers 500 after
+# upload anyway, delete it (see docs/DEPLOY.md).
+LimitRequestBody 65536
+
+# Errors go to the log, never into a response. Under mod_php this applies;
+# under PHP-FPM or CGI the .user.ini next to this file does the same.
+<IfModule mod_php.c>
+    php_flag display_errors off
+    php_flag log_errors on
+</IfModule>

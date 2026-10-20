@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "assets.schema.json",
+  "title": "assets.json: the models",
+  "description": "Every model the game loads. The validator also checks that each file exists.",
+  "type": "object",
+  "required": ["models"],
+  "additionalProperties": false,
+  "properties": {
+    "models": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },
+      "additionalProperties": { "$ref": "#/$defs/model" }
+    }
+  },
+  "$defs": {
+    "model": {
+      "type": "object",
+      "required": ["file", "kind", "scale", "rotationOffsetDeg", "source", "licence"],
+      "additionalProperties": false,
+      "properties": {
+        "file": { "type": "string", "pattern": "^assets/models/[a-z0-9_]+\\.glb$" },
+        "kind": { "enum": ["character", "furniture", "prop"] },
+        "scale": { "type": "number", "exclusiveMinimum": 0 },
+        "rotationOffsetDeg": { "type": "number" },
+        "clips": {
+          "description": "Characters only: logical clip name to the clip name inside the file. sit may be null.",
+          "type": "object",
+          "required": ["idle", "walk", "sit"],
+          "additionalProperties": false,
+          "properties": {
+            "idle": { "type": "string", "minLength": 1 },
+            "walk": { "type": "string", "minLength": 1 },
+            "sit": { "type": ["string", "null"], "minLength": 1 }
+          }
+        },
+        "footprint": {
+          "description": "Furniture only: tiles along X (w) and Z (d) when facing S or N.",
+          "type": "object",
+          "required": ["w", "d"],
+          "additionalProperties": false,
+          "properties": {
+            "w": { "type": "integer", "minimum": 1 },
+            "d": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "source": { "type": "string", "minLength": 1 },
+        "licence": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "character" } } },
+          "then": { "required": ["clips"], "properties": { "footprint": false } },
+          "else": { "properties": { "clips": false } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "furniture" } } },
+          "then": { "required": ["footprint"] },
+          "else": { "properties": { "footprint": false } }
+        }
+      ]
+    }
+  }
+}

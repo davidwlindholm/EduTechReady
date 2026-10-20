@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "level.schema.json",
+  "title": "level.json: the map",
+  "description": "The map, the player's start, furniture and props. Cross-references (assets, footprints, overlaps) are checked by scripts/validate_content.mjs.",
+  "type": "object",
+  "required": ["legend", "rows", "playerStart"],
+  "additionalProperties": false,
+  "properties": {
+    "legend": {
+      "description": "The fixed tile legend. It may not change.",
+      "const": {
+        "#": "wall",
+        "W": "window",
+        "G": "glass",
+        "D": "door_open",
+        "d": "door_closed",
+        ".": "floor",
+        "h": "floor_hallway",
+        "_": "void"
+      }
+    },
+    "rows": {
+      "description": "One string per row, north (row 0) first. Every row has the same length (checked by the validator).",
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[#WGDd.h_]+$" }
+    },
+    "playerStart": {
+      "type": "object",
+      "required": ["col", "row", "facing"],
+      "additionalProperties": false,
+      "properties": {
+        "col": { "$ref": "#/$defs/tile" },
+        "row": { "$ref": "#/$defs/tile" },
+        "facing": { "$ref": "#/$defs/facing" }
+      }
+    },
+    "furniture": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "asset", "col", "row", "facing"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]{0,39}$" },
+          "asset": { "$ref": "#/$defs/assetId" },
+          "col": { "$ref": "#/$defs/tile", "description": "North-west tile of the footprint after rotation." },
+          "row": { "$ref": "#/$defs/tile" },
+          "facing": { "$ref": "#/$defs/facing" }
+        }
+      }
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["asset", "x", "y", "z", "rotationDeg"],
+        "additionalProperties": false,
+        "properties": {
+          "asset": { "$ref": "#/$defs/assetId" },
+          "x": { "type": "number", "description": "World position in metres (1 m = 1 tile)." },
+          "y": { "type": "number", "minimum": 0, "description": "Height of the prop's base in metres." },
+          "z": { "type": "number" },
+          "rotationDeg": { "type": "number" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "tile": { "type": "integer", "minimum": 0 },
+    "facing": { "enum": ["N", "E", "S", "W"] },
+    "assetId": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+  }
+}

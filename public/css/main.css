@@ -1,0 +1,590 @@
+/* EduTechReady game styles. Colours follow the original design mockup. */
+
+:root {
+  --bg: #e4e9ee;
+  --panel: rgba(36, 34, 31, 0.94);
+  --panel-solid: #24221f;
+  --panel-border: #6e6656;
+  --panel-inner: #3a3732;
+  --text: #ffffff;
+  --text-muted: #d6d1c7;
+  --gold: #f0b54a;
+  --green: #9bd27a;
+  --focus: #ffd166;
+  --label-bg: rgba(40, 40, 40, 0.86);
+  /* The mockup's panel frame: a light tan edge around a dark inner line. */
+  --frame: #8c8170;
+  --frame-light: #a3967d;
+  --button-bg: #2b2926;
+  --radius: 6px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--text);
+}
+
+[hidden] { display: none !important; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.game { position: fixed; inset: 0; }
+
+#scene { display: block; width: 100%; height: 100%; outline: none; }
+#scene.is-over-npc, #scene.is-over-door { cursor: pointer; }
+
+#labels, #overlays { position: absolute; inset: 0; pointer-events: none; }
+/* Own stacking contexts: CSS2DRenderer gives each label a z-index, which must not
+   lift labels above the overlays. */
+#labels { z-index: 1; }
+#overlays { z-index: 2; }
+.status { z-index: 3; }
+.label-layer { pointer-events: none; }
+#overlays > * { pointer-events: auto; }
+#overlays > .debug-hud { pointer-events: none; }
+
+button { font: inherit; }
+button:focus-visible, .token--chip:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  margin: 0;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
+}
+.status--error { border: 2px solid #e07a5f; max-width: min(520px, calc(100% - 32px)); line-height: 1.45; }
+
+/* ---- Loading screen ---- */
+.loading {
+  width: min(360px, calc(100% - 32px));
+  padding: 16px 20px 18px;
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+.loading__text { margin: 0 0 10px; font-size: 16px; }
+.loading__bar {
+  height: 10px;
+  border: 1px solid var(--panel-border);
+  border-radius: 5px;
+  background: var(--panel-inner);
+  overflow: hidden;
+}
+.loading__fill {
+  width: 0;
+  height: 100%;
+  background: var(--gold);
+  transition: width 120ms linear;
+}
+
+.panel {
+  background: var(--panel);
+  border: 2px solid var(--frame);
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 0 1px #14130f, 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* ---- NPC labels (CSS2D) ---- */
+.npc-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 8px 4px;
+  border-radius: 5px;
+  background: var(--label-bg);
+  color: var(--text);
+  line-height: 1.2;
+  white-space: nowrap;
+  user-select: none;
+  /* Hidden until hovered or the player is in talking range. Hidden
+     labels take no clicks; visibility switches after the fade-out. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 150ms ease, visibility 0s linear 150ms;
+}
+.npc-label.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity 150ms ease, visibility 0s;
+}
+.npc-label__name { font-weight: 700; font-size: 14px; }
+.npc-label__role { font-size: 12px; color: #e8e3da; }
+
+/* ---- Menu bar ---- */
+.menu {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+}
+.menu__button, .button {
+  min-width: 96px;
+  padding: 9px 16px;
+  border: 1px solid var(--frame-light);
+  border-radius: 4px;
+  background: var(--button-bg);
+  box-shadow: inset 0 0 0 1px #121110;
+  color: var(--text);
+  font-size: 17px;
+  cursor: pointer;
+}
+.menu__button:hover:not(:disabled), .button:hover { background: #3d3a35; }
+.menu__button:disabled { color: #9a948a; cursor: not-allowed; }
+/* The shadows toggle: smaller and quieter than the three game buttons. */
+.menu__toggle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+}
+.menu__toggle:hover { background: #4a463f; color: var(--text); }
+.menu__toggle:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.menu__toggle-mark {
+  width: 11px;
+  height: 11px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+.menu__toggle[aria-pressed="true"] .menu__toggle-mark { border-color: var(--green); background: var(--green); }
+
+/* ---- Dialogue ---- */
+.dialogue {
+  position: absolute;
+  right: 12px;
+  bottom: 64px;
+  width: min(440px, calc(100% - 24px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.dialogue__speech {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+}
+.dialogue__portrait {
+  flex: none;
+  width: 96px;
+  height: 96px;
+  border: 2px solid var(--frame-light);
+  border-radius: 4px;
+  background: var(--panel-inner);
+  box-shadow: 0 0 0 1px #121110;
+  overflow: hidden;
+}
+.dialogue__portrait-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.dialogue__portrait-img.is-loading { visibility: hidden; }
+.dialogue__text { min-width: 0; }
+.dialogue__name {
+  margin: 0 0 4px;
+  color: var(--gold);
+  font-size: 19px;
+  font-weight: 700;
+}
+.dialogue__line { margin: 0; font-size: 16px; line-height: 1.35; }
+/* As in the mockup: the options panel fits its text and sits in from the right. */
+.dialogue__options { width: auto; min-width: 60%; max-width: calc(100% - 28px); margin-right: 28px; padding: 6px 8px; }
+.dialogue__questions { list-style: none; margin: 0; padding: 0; }
+.dialogue__option {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  padding: 5px 6px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text);
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+.dialogue__option:hover:not(:disabled) { background: rgba(255, 255, 255, 0.08); }
+.dialogue__option:disabled { cursor: not-allowed; }
+.dialogue__option:disabled .dialogue__option-text, .dialogue__option:disabled .dialogue__number { color: #8a857c; }
+.dialogue__cap { margin: 4px 6px 2px; font-size: 14px; font-style: italic; color: var(--text-muted); }
+.dialogue__number { color: var(--green); }
+.dialogue__option.is-asked .dialogue__option-text { color: #aaa49a; }
+.dialogue__option.is-asked .dialogue__option-text::after { content: " \2713"; color: var(--green); }
+
+/* ---- Placement panels ---- */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+  overflow-y: auto; /* deep stacks can make the panel taller than the screen */
+  overscroll-behavior: contain;
+  background: rgba(20, 22, 26, 0.45);
+  z-index: 10; /* over the mode notice, which comes later in the DOM */
+}
+.placement {
+  width: min(880px, calc(100% - 32px));
+  margin: auto; /* centred when it fits, top-aligned and scrollable when not */
+  background: var(--panel-solid);
+  padding: 18px 22px;
+}
+.placement__title { margin: 0 0 4px; color: var(--gold); font-size: 21px; }
+.placement__instructions { margin: 0 0 10px; color: var(--text-muted); line-height: 1.35; }
+.placement__locked {
+  margin: 0 0 10px;
+  padding: 6px 10px;
+  border-left: 4px solid var(--gold);
+  background: rgba(240, 181, 74, 0.12);
+  color: var(--text);
+  font-weight: 600;
+}
+/* The side margins keep pin heads at 0 and 100 inside the panel, centred on their needles. */
+.placement__chart { margin: 0 52px; }
+
+/* SAMR brackets: "Forbedring" over bands 0-1, "Transformation" over bands 2-3. */
+.placement__brackets { position: relative; height: 30px; }
+.placement__bracket {
+  position: absolute; /* left and width are set from the value range */
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+.placement__bracket::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 2px;
+  height: 9px;
+  border: 2px solid var(--text-muted);
+  border-bottom: 0;
+  border-radius: 3px 3px 0 0;
+}
+.placement__bracket-label {
+  padding: 0 8px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* The field: bands as columns, pins standing on the axis line at the bottom.
+   Its height is set from the tallest pin stack. */
+.placement__axis {
+  position: relative;
+  height: 170px;
+  border-bottom: 4px solid #f3efe6;
+}
+.placement__axis.is-drop-target { box-shadow: 0 0 0 2px var(--gold); }
+.placement__band {
+  position: absolute; /* left and width come from the band edges in lib/axes.js */
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+  border-left: 1px dashed rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.04);
+  text-align: center;
+}
+.placement__band:nth-of-type(even) { background: rgba(255, 255, 255, 0.09); }
+.placement__band:first-of-type { border-left: 0; }
+.placement__axis--rogers .placement__band, .placement__axis--rogers .placement__band:nth-of-type(even) { background: transparent; }
+.placement__band.is-active { background: rgba(240, 181, 74, 0.2); }
+.placement__axis--rogers .placement__band.is-active { background: rgba(240, 181, 74, 0.16); }
+.placement__band-label { font-size: 14px; color: var(--text-muted); line-height: 1.2; }
+.placement__band-share { font-size: 13px; font-weight: 700; color: var(--text); }
+.placement__band.is-active .placement__band-label { color: var(--gold); font-weight: 700; }
+
+/* Rogers bell curve, under the band labels. */
+.placement__curve {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100% - var(--label-area));
+}
+.placement__region { fill: #5d6f86; }
+.placement__region--1, .placement__region--3 { fill: #74869c; }
+.placement__region--2 { fill: #8a9bb0; }
+.placement__curve-line { fill: none; stroke: #dfe7f0; stroke-width: 2px; }
+
+/* Guide line through all the bands at the dragged or focused value. */
+.placement__guide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 2px dashed var(--gold);
+  translate: -1px 0;
+  z-index: 5; /* over the bands, under the pins */
+  pointer-events: none;
+}
+
+.placement__scale { position: relative; height: 26px; font-size: 12px; color: var(--text-muted); }
+.placement__tick {
+  position: absolute; /* left is the value in percent */
+  top: 0;
+  translate: -50% 0;
+  padding-top: 8px;
+}
+.placement__tick::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 6px;
+  margin-left: -1px;
+  background: #f3efe6;
+}
+
+/* Live readout ("Modification · 62") above the dragged or focused token. */
+.placement__readout {
+  position: fixed; /* left and top are the anchor's top centre */
+  z-index: 60;
+  translate: -50% calc(-100% - 8px);
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: var(--gold);
+  color: #1d1b18;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.placement__tray-title { margin: 8px 0 6px; font-size: 15px; font-weight: 600; }
+.placement__tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 52px;
+  padding: 8px;
+  border: 1px dashed var(--panel-border);
+  border-radius: 4px;
+}
+.placement__tray.is-drop-target { border-color: var(--gold); background: rgba(240, 181, 74, 0.08); }
+.placement__empty { margin: 8px 0 0; color: var(--text-muted); }
+.placement__actions { display: flex; justify-content: flex-end; margin-top: 14px; }
+
+/* Tokens: chips in the tray, pins on the axis. */
+.token {
+  color: var(--text);
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.token--chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 4px;
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  background: var(--panel-inner);
+}
+.token__portrait { width: 32px; height: 32px; border-radius: 50%; }
+
+/* A pin is centred on its value (--v, 0..100): the needle tip touches the axis
+   line exactly there. Only the head and needle take the pointer, so a pin
+   stacked above never covers the heads below it. */
+.token--placed {
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--v) * 1%);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  pointer-events: none;
+}
+.token--placed:focus-visible { outline: none; }
+.pin__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+}
+.token--placed:focus-visible .pin__head { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 8px; }
+.pin__name {
+  position: relative;
+  z-index: 1;
+  max-width: 104px;
+  margin-bottom: -5px;
+  padding: 1px 7px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid var(--gold);
+  border-radius: 9px;
+  background: #1d1b18;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.pin__portrait {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  background: var(--panel-inner);
+}
+.pin__needle {
+  width: 12px; /* a wider hit area; the visible needle is the 2px centre line */
+  height: var(--needle, 26px);
+  pointer-events: auto;
+  background: linear-gradient(to right, transparent 4px, rgba(0, 0, 0, 0.55) 4px, rgba(0, 0, 0, 0.55) 5px,
+    var(--gold) 5px, var(--gold) 7px, rgba(0, 0, 0, 0.55) 7px, rgba(0, 0, 0, 0.55) 8px, transparent 8px);
+}
+.pin__tip {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 9px solid var(--gold);
+  pointer-events: auto;
+}
+.token.is-dragging { cursor: grabbing; z-index: 100 !important; }
+/* A chip over the axis hides behind its pin preview (the ghost) until dropped. */
+.token--chip.is-previewed { opacity: 0; }
+.pin--ghost { z-index: 90; }
+.pin--ghost .pin__head { filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6)); }
+.token--chip.is-dragging { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); }
+.token--placed.is-dragging .pin__head { filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6)); }
+.placement.is-dragging, .placement.is-dragging * { cursor: grabbing; }
+
+/* Read-only after submission. */
+.placement.is-locked .token { cursor: default; }
+.placement.is-locked .pin__portrait, .placement.is-locked .token__portrait { filter: saturate(0.6); }
+
+/* ---- Færdig and notices; the results view is in results.css ---- */
+.modal {
+  width: min(620px, calc(100% - 32px));
+  margin: auto;
+  padding: 18px 22px;
+  background: var(--panel-solid);
+}
+.modal__title { margin: 0 0 10px; color: var(--gold); font-size: 21px; }
+.modal__text { margin: 0 0 10px; line-height: 1.4; }
+.modal__note, .modal__error {
+  padding: 6px 10px;
+  border-left: 4px solid var(--gold);
+  background: rgba(240, 181, 74, 0.12);
+  font-weight: 600;
+}
+.modal__error { border-left-color: #e07a5f; background: rgba(224, 122, 95, 0.14); }
+.modal__status { color: var(--text-muted); font-style: italic; }
+/* The raw error code under a friendly message, for whoever helps the pair. */
+.modal__detail { margin-top: -4px; color: var(--text-muted); font-size: 13px; }
+.modal__actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+.button--primary { border-color: var(--gold); }
+.button:disabled { color: #9a948a; cursor: not-allowed; background: var(--panel-inner); }
+/* The instructions window (opens at the start and from Instruktioner).
+   Compact, so the text fits a 1280 x 600 browser window without scrolling. */
+.modal.instructions { width: min(840px, calc(100% - 32px)); padding: 14px 22px; font-size: 15px; }
+.instructions .modal__title { margin-bottom: 6px; }
+.instructions__intro { margin-bottom: 2px; }
+.instructions__heading { margin: 8px 0 2px; color: var(--gold); font-size: 16px; }
+.instructions__list { margin: 0; padding-left: 22px; line-height: 1.35; }
+.instructions__list li + li { margin-top: 2px; }
+.instructions .modal__actions { margin-top: 10px; }
+.finish__missing { margin: 0; padding-left: 22px; line-height: 1.45; }
+.finish__missing-item + .finish__missing-item { margin-top: 4px; }
+
+.notice {
+  position: absolute;
+  /* Top right: the level's far west corner (the hallway door) is top centre. */
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: max-content;
+  max-width: min(420px, calc(100% - 24px));
+  padding: 8px 8px 8px 14px;
+  border-left: 4px solid var(--gold);
+}
+.notice__text { margin: 0; padding-top: 3px; line-height: 1.35; }
+.notice__close {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  background: var(--panel-inner);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ---- Debug HUD (debug=1 only) ---- */
+.debug-hud {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #9f9;
+  font: 12px/1.3 ui-monospace, Menlo, monospace;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+@media (forced-colors: active) {
+  .panel, .npc-label, .token--chip, .menu__button, .menu__toggle, .button { border: 1px solid CanvasText; }
+  .menu__toggle[aria-pressed="true"] .menu__toggle-mark { background: CanvasText; }
+  .pin__needle { background: CanvasText; width: 2px; }
+  .pin__tip { border-top-color: CanvasText; }
+  .placement__guide { border-left-color: Highlight; }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Welcome to the staff room",
+  "intro": "You play in pairs. Talk about what you hear and agree on your answers. There isn't always one right answer.",
+  "sections": [
+    {
+      "heading": "Your task",
+      "items": [
+        "Walk around the staff room and the corridor, and talk to all eight people. Each of them tells you about one technology they use in their work.",
+        "Place each person on the SAMR and Rogers scales in the menu at the bottom left.",
+        "On SAMR, you place the way the person uses that particular technology.",
+        "On Rogers, you place the person by when they started using that particular technology, compared with their colleagues here.",
+        "Press Done when everyone is placed on both scales. That sends your answers."
+      ]
+    },
+    {
+      "heading": "Controls",
+      "items": [
+        "Click on the floor to walk there.",
+        "Click on a person to talk to them. Press 1-9 to choose a question.",
+        "The conversation ends when you say Goodbye, press Esc or walk away.",
+        "Drag the people onto the axis. The tip of the pin shows the placement.",
+        "The Instructions button shows this guide again."
+      ]
+    }
+  ],
+  "close": "Close"
+}

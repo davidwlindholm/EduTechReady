@@ -1,0 +1,17 @@
+assets-source/
+private/config.php
+db/*.sqlite
+node_modules/
+dist/
+.DS_Store
+test-results/
+playwright-report/
+scripts/.logs/
+private/config.php.test-api-backup
+db/*.sqlite-*
+
+# Local only: development notes and the screenshots the end-to-end tests write.
+notes/
+docs/screenshots/
+.claude/
+*.bundle

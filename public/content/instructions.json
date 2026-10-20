@@ -1,0 +1,27 @@
+{
+  "title": "Velkommen til lærerværelset",
+  "intro": "I spiller to og to. Snak om det, I hører, og bliv enige om jeres svar. Der er ikke altid ét rigtigt svar.",
+  "sections": [
+    {
+      "heading": "Jeres opgave",
+      "items": [
+        "Gå rundt i lærerværelset og på gangen, og tal med alle otte personer. Hver af dem fortæller om én teknologi, de bruger i deres arbejde.",
+        "Placér hver person på skalaerne SAMR og Rogers i menuen nederst til venstre.",
+        "På SAMR placerer I den måde, personen bruger netop den teknologi på.",
+        "På Rogers placerer I personen efter, hvornår vedkommende tog netop den teknologi i brug, sammenlignet med kollegerne her på stedet.",
+        "Tryk på Færdig, når alle er placeret på begge skalaer. Så sender I jeres svar."
+      ]
+    },
+    {
+      "heading": "Sådan styrer I",
+      "items": [
+        "Klik på gulvet for at gå derhen.",
+        "Klik på en person for at tale med vedkommende. Tasterne 1-9 vælger et spørgsmål.",
+        "Samtalen slutter, når I siger Farvel, trykker Esc eller går væk.",
+        "Træk personerne ind på aksen. Det er nålens spids, der viser placeringen.",
+        "Knappen Instruktioner viser denne vejledning igen."
+      ]
+    }
+  ],
+  "close": "Luk"
+}

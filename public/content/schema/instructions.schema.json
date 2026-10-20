@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "instructions.schema.json",
+  "title": "instructions.json: the instructions window",
+  "description": "The window the game opens at the start, and again from the Instruktioner button. The window does not scroll in a 1280 x 600 browser window (a 1280 x 720 laptop screen minus the browser's bars) as long as the text stays within these limits; the validator also estimates the height of the whole text and caps it (INSTRUCTIONS_MAX_LINES in scripts/validate_content.mjs).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "sections", "close"],
+  "properties": {
+    "title": { "type": "string", "minLength": 1, "maxLength": 45 },
+    "intro": { "type": "string", "minLength": 1, "maxLength": 240 },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["heading", "items"],
+        "properties": {
+          "heading": { "type": "string", "minLength": 1, "maxLength": 40 },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 6,
+            "items": { "type": "string", "minLength": 1, "maxLength": 300 }
+          }
+        }
+      }
+    },
+    "close": { "type": "string", "minLength": 1, "maxLength": 20 }
+  }
+}

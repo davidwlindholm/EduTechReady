@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self'; script-src 'self'; connect-src 'self' blob: data:; object-src 'none'; base-uri 'self'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EduTechReady</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/results.css">
+</head>
+<body>
+  <main class="game">
+    <canvas id="scene" tabindex="-1"></canvas>
+    <div id="labels"></div>
+    <div id="overlays"></div>
+    <div id="loading" class="status loading">
+      <p id="loading-text" class="loading__text" role="status">Indlæser …</p>
+      <div id="loading-bar" class="loading__bar" role="progressbar" aria-labelledby="loading-text" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="loading-fill" class="loading__fill"></div>
+      </div>
+    </div>
+    <p id="load-error" class="status status--error" role="alert" hidden>Spillet kunne ikke indlæses. Genindlæs siden, eller prøv en anden browser.</p>
+  </main>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

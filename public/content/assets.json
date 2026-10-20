@@ -1,0 +1,324 @@
+{
+  "models": {
+    "char_w1": {
+      "file": "assets/models/char_w1.glb",
+      "kind": "character",
+      "scale": 0.367,
+      "rotationOffsetDeg": 0,
+      "clips": {
+        "idle": "Female_Idle",
+        "walk": "Female_Walk",
+        "sit": "Female_Sitting"
+      },
+      "source": "Quaternius, Animated Women Pack, Smooth_Female_Casual.blend",
+      "licence": "CC0 1.0"
+    },
+    "char_w2": {
+      "file": "assets/models/char_w2.glb",
+      "kind": "character",
+      "scale": 0.367,
+      "rotationOffsetDeg": 0,
+      "clips": {
+        "idle": "Female_Idle",
+        "walk": "Female_Walk",
+        "sit": "Female_Sitting"
+      },
+      "source": "Quaternius, Animated Women Pack, Smooth_Female_Dress.blend",
+      "licence": "CC0 1.0"
+    },
+    "char_w3": {
+      "file": "assets/models/char_w3.glb",
+      "kind": "character",
+      "scale": 0.367,
+      "rotationOffsetDeg": 0,
+      "clips": {
+        "idle": "Female_Idle",
+        "walk": "Female_Walk",
+        "sit": "Female_Sitting"
+      },
+      "source": "Quaternius, Animated Women Pack, Smooth_Female_TankTop.blend",
+      "licence": "CC0 1.0"
+    },
+    "char_w4": {
+      "file": "assets/models/char_w4.glb",
+      "kind": "character",
+      "scale": 0.367,
+      "rotationOffsetDeg": 0,
+      "clips": {
+        "idle": "Female_Idle",
+        "walk": "Female_Walk",
+        "sit": "Female_Sitting"
+      },
+      "source": "Quaternius, Animated Women Pack, Smooth_Female_Alternative.blend",
+      "licence": "CC0 1.0"
+    },
+    "char_m1": {
+      "file": "assets/models/char_m1.glb",
+      "kind": "character",
+      "scale": 0.354,
+      "rotationOffsetDeg": 0,
+      "clips": {
+        "idle": "Man_Idle",
+        "walk": "Man_Walk",
+        "sit": "Man_Sitting"
+      },
+      "source": "Quaternius, Animated Men Pack, Smooth_Male_Casual.blend",
+      "licence": "CC0 1.0"
+    },
+    "char_m2": {
+      "file": "assets/models/char_m2.glb",
+      "kind": "character",
+      "scale": 0.354,
+      "rotationOffsetDeg": 0,
+      "clips": {
+        "idle": "Man_Idle",
+        "walk": "Man_Walk",
+        "sit": "Man_Sitting"
+      },
+      "source": "Quaternius, Animated Men Pack, Smooth_Male_LongSleeve.blend",
+      "licence": "CC0 1.0"
+    },
+    "char_m3": {
+      "file": "assets/models/char_m3.glb",
+      "kind": "character",
+      "scale": 0.354,
+      "rotationOffsetDeg": 0,
+      "clips": {
+        "idle": "Man_Idle",
+        "walk": "Man_Walk",
+        "sit": "Man_Sitting"
+      },
+      "source": "Quaternius, Animated Men Pack, Smooth_Male_Shirt.blend",
+      "licence": "CC0 1.0"
+    },
+    "char_m4": {
+      "file": "assets/models/char_m4.glb",
+      "kind": "character",
+      "scale": 0.354,
+      "rotationOffsetDeg": 0,
+      "clips": {
+        "idle": "Man_Idle",
+        "walk": "Man_Walk",
+        "sit": "Man_Sitting"
+      },
+      "source": "Quaternius, Animated Men Pack, Smooth_Male_Suit.blend",
+      "licence": "CC0 1.0"
+    },
+    "table_long": {
+      "file": "assets/models/table_long.glb",
+      "kind": "furniture",
+      "scale": 0.91,
+      "rotationOffsetDeg": 90,
+      "footprint": {
+        "w": 3,
+        "d": 2
+      },
+      "source": "Quaternius, Ultimate Furniture Pack, Table.blend",
+      "licence": "CC0 1.0"
+    },
+    "chair": {
+      "file": "assets/models/chair.glb",
+      "kind": "furniture",
+      "scale": 0.91,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 1,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate Furniture Pack, Chair.blend",
+      "licence": "CC0 1.0"
+    },
+    "sofa": {
+      "file": "assets/models/sofa.glb",
+      "kind": "furniture",
+      "scale": 0.55,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 2,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate Furniture Pack, Sofa2.blend",
+      "licence": "CC0 1.0"
+    },
+    "coffee_table": {
+      "file": "assets/models/coffee_table.glb",
+      "kind": "furniture",
+      "scale": 1.4,
+      "rotationOffsetDeg": 90,
+      "footprint": {
+        "w": 2,
+        "d": 1
+      },
+      "source": "Quaternius, Furniture Pack, CoffeeTable.blend",
+      "licence": "CC0 1.0"
+    },
+    "counter_drawers": {
+      "file": "assets/models/counter_drawers.glb",
+      "kind": "furniture",
+      "scale": 0.5,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 1,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate House Interior Pack, Kitchen_2Drawers.blend (2 linked copies)",
+      "licence": "CC0 1.0"
+    },
+    "counter_sink": {
+      "file": "assets/models/counter_sink.glb",
+      "kind": "furniture",
+      "scale": 0.5,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 1,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate House Interior Pack, Kitchen_Sink.blend (2 linked copies)",
+      "licence": "CC0 1.0"
+    },
+    "counter_cabinet": {
+      "file": "assets/models/counter_cabinet.glb",
+      "kind": "furniture",
+      "scale": 0.5,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 1,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate House Interior Pack, Kitchen_Cabinet1.blend (2 linked copies)",
+      "licence": "CC0 1.0"
+    },
+    "fridge": {
+      "file": "assets/models/fridge.glb",
+      "kind": "furniture",
+      "scale": 0.544,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 1,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate House Interior Pack, Kitchen_Fridge.blend",
+      "licence": "CC0 1.0"
+    },
+    "drawer_cabinet": {
+      "file": "assets/models/drawer_cabinet.glb",
+      "kind": "furniture",
+      "scale": 0.55,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 2,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate House Interior Pack, Drawer_5.blend",
+      "licence": "CC0 1.0"
+    },
+    "plant_1": {
+      "file": "assets/models/plant_1.glb",
+      "kind": "furniture",
+      "scale": 1,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 1,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate House Interior Pack, Houseplant_4.blend",
+      "licence": "CC0 1.0"
+    },
+    "plant_2": {
+      "file": "assets/models/plant_2.glb",
+      "kind": "furniture",
+      "scale": 0.8,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 1,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate House Interior Pack, Houseplant_6.blend",
+      "licence": "CC0 1.0"
+    },
+    "plant_3": {
+      "file": "assets/models/plant_3.glb",
+      "kind": "furniture",
+      "scale": 0.9,
+      "rotationOffsetDeg": 0,
+      "footprint": {
+        "w": 1,
+        "d": 1
+      },
+      "source": "Quaternius, Ultimate House Interior Pack, Houseplant_8.blend",
+      "licence": "CC0 1.0"
+    },
+    "coffee_cup": {
+      "file": "assets/models/coffee_cup.glb",
+      "kind": "prop",
+      "scale": 0.68,
+      "rotationOffsetDeg": 0,
+      "source": "Kenney, Food Kit, Models/GLB format/cup-coffee.glb",
+      "licence": "CC0 1.0"
+    },
+    "mug": {
+      "file": "assets/models/mug.glb",
+      "kind": "prop",
+      "scale": 0.35,
+      "rotationOffsetDeg": 0,
+      "source": "Kenney, Food Kit, Models/GLB format/mug.glb",
+      "licence": "CC0 1.0"
+    },
+    "food_croissant": {
+      "file": "assets/models/food_croissant.glb",
+      "kind": "prop",
+      "scale": 0.31,
+      "rotationOffsetDeg": 0,
+      "source": "Kenney, Food Kit, Models/GLB format/croissant.glb",
+      "licence": "CC0 1.0"
+    },
+    "food_apple": {
+      "file": "assets/models/food_apple.glb",
+      "kind": "prop",
+      "scale": 0.42,
+      "rotationOffsetDeg": 0,
+      "source": "Kenney, Food Kit, Models/GLB format/apple.glb",
+      "licence": "CC0 1.0"
+    },
+    "food_muffin": {
+      "file": "assets/models/food_muffin.glb",
+      "kind": "prop",
+      "scale": 0.28,
+      "rotationOffsetDeg": 0,
+      "source": "Kenney, Food Kit, Models/GLB format/muffin.glb",
+      "licence": "CC0 1.0"
+    },
+    "coffee_machine": {
+      "file": "assets/models/coffee_machine.glb",
+      "kind": "prop",
+      "scale": 1.75,
+      "rotationOffsetDeg": 0,
+      "source": "Kenney, Furniture Kit 2.0, Models/GLTF format/kitchenCoffeeMachine.glb (origin moved to bottom centre)",
+      "licence": "CC0 1.0"
+    },
+    "microwave": {
+      "file": "assets/models/microwave.glb",
+      "kind": "prop",
+      "scale": 1.67,
+      "rotationOffsetDeg": 0,
+      "source": "Kenney, Furniture Kit 2.0, Models/GLTF format/kitchenMicrowave.glb (origin moved to bottom centre)",
+      "licence": "CC0 1.0"
+    },
+    "toaster": {
+      "file": "assets/models/toaster.glb",
+      "kind": "prop",
+      "scale": 1.54,
+      "rotationOffsetDeg": 0,
+      "source": "Kenney, Furniture Kit 2.0, Models/GLTF format/toaster.glb (origin moved to bottom centre)",
+      "licence": "CC0 1.0"
+    },
+    "papers": {
+      "file": "assets/models/papers.glb",
+      "kind": "prop",
+      "scale": 1,
+      "rotationOffsetDeg": 0,
+      "source": "Generated by scripts/make_papers.mjs",
+      "licence": "CC0 1.0"
+    }
+  }
+}

@@ -1,0 +1,173 @@
+/* Results views: the in-game modal and the projector page
+   (results.html). Builds on main.css. The charts reuse the placement panel
+   colours, so participants recognise the axes. print.css recolours them. */
+
+/* ---- In-game modal ---- */
+.modal.results {
+  display: flex;
+  flex-direction: column;
+  width: min(1120px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+}
+.results .modal__body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+.results .results-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+}
+/* Inset, so the scroller's own overflow does not clip it. */
+.results .results-list:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: -3px;
+}
+.results__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 18px;
+  margin-bottom: 8px;
+}
+.results__count { margin: 0; font-size: 18px; font-weight: 700; }
+.results__updated { margin: 0; color: var(--text-muted); font-size: 14px; }
+.results__updated:empty { display: none; }
+.results__problem {
+  flex-basis: 100%;
+  margin: 0;
+  padding: 4px 10px;
+  border-left: 4px solid #e07a5f;
+  background: rgba(224, 122, 95, 0.14);
+  font-weight: 600;
+}
+.results__practice { margin: 0; font-weight: 600; }
+.results .results-legend { flex-basis: 100%; }
+
+/* ---- Legend ---- */
+.results-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.results-legend__item { display: flex; align-items: center; gap: 6px; }
+.results-legend__icon { width: 20px; height: 14px; flex: none; }
+
+/* ---- Rows: who | SAMR | Rogers ---- */
+.results-list { margin: 0; padding: 0; list-style: none; }
+.results-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.6fr) 1fr 1fr; /* wider charts, so their labels stay legible */
+  gap: 14px;
+  align-items: start;
+  padding: 10px 0;
+  border-top: 1px solid var(--panel-border);
+}
+.results-row__who { display: flex; gap: 10px; align-items: flex-start; min-width: 0; }
+.results-row__portrait {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--panel-border);
+  border-radius: 4px;
+  background: var(--panel-inner);
+}
+.results-row__text { min-width: 0; }
+.results-row__name { margin: 0 0 3px; color: var(--gold); font-size: 16px; line-height: 1.25; }
+.results-row__summary { margin: 0; color: var(--text-muted); font-size: 13px; line-height: 1.35; }
+.results-row__chart { margin: 0; min-width: 0; }
+.results-row__axis { margin: 0 0 2px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
+
+/* ---- Charts (SVG, viewBox 400 wide; text scales with the chart) ---- */
+.results-chart { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--font); }
+.results-chart text { text-anchor: middle; }
+.results-chart__bracket-label { fill: var(--text); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.results-chart__bracket { fill: none; stroke: var(--text-muted); stroke-width: 1.6; stroke-linejoin: round; }
+.results-chart__band-bg--odd { fill: rgba(255, 255, 255, 0.04); }
+.results-chart__band-bg--even { fill: rgba(255, 255, 255, 0.09); }
+.results-chart__divider { stroke: rgba(255, 255, 255, 0.28); stroke-width: 1; stroke-dasharray: 3 3; }
+.results-chart__band-label { fill: var(--text-muted); font-size: 12.5px; }
+.results-chart__band-label--rogers { font-size: 10.5px; }
+.results-chart__share { fill: var(--text); font-size: 10.5px; font-weight: 700; }
+.results-chart__region { fill: #5d6f86; }
+.results-chart__region--1, .results-chart__region--3 { fill: #74869c; }
+.results-chart__region--2 { fill: #8a9bb0; }
+.results-chart__curve { fill: none; stroke: #dfe7f0; stroke-width: 1.5; }
+.results-chart__axis { stroke: #f3efe6; stroke-width: 3; }
+.results-chart__tick { stroke: #f3efe6; stroke-width: 1.5; }
+.results-chart__tick-label { fill: var(--text-muted); font-size: 12px; }
+.results-chart__middle { fill: rgba(155, 210, 122, 0.3); stroke: #c4f0a8; stroke-width: 1.5; }
+.results-chart__middle-edge { fill: none; stroke: #1d1b18; stroke-width: 4; }
+.results-chart__dot { fill: #f3efe6; stroke: #1d1b18; stroke-width: 1.5; }
+.results-chart__dot--own { fill: var(--gold); stroke: #1d1b18; stroke-width: 1.5; }
+
+/* ---- Projector page (results.html) ---- */
+html:has(body.results-page), body.results-page { height: auto; min-height: 100%; overflow: auto; }
+/* The html element carries the dark colour too: with height auto, the body is
+   only as tall as its content, and a short page (loading, code messages) would
+   otherwise show main.css's light --bg below it. */
+html:has(body.results-page) { background: var(--panel-solid); }
+body.results-page { background: var(--panel-solid); line-height: 1.4; }
+.results-page__main { max-width: 1800px; margin: 0 auto; padding: 24px 32px 40px; }
+.results-page__loading { color: var(--text-muted); font-size: 20px; }
+.results-page__code-problem {
+  max-width: 760px;
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-left: 5px solid #e07a5f;
+  background: rgba(224, 122, 95, 0.14);
+  font-size: 22px;
+  font-weight: 600;
+}
+.results-page__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px 32px;
+  margin-bottom: 14px;
+}
+.results-page__heading { flex: 1 1 420px; }
+.results-page__title { margin: 0; color: var(--gold); font-size: 34px; line-height: 1.15; }
+.results-page__session { margin: 4px 0 0; color: var(--text-muted); font-size: 20px; letter-spacing: 0.04em; }
+.results-page__status .results__count { font-size: 26px; }
+.results-page__status .results__updated, .results-page__auto { margin: 2px 0 0; font-size: 16px; color: var(--text-muted); }
+.results-page__status .results__problem { margin-top: 6px; }
+.results-page__actions { display: flex; gap: 10px; }
+.results-page .results-legend { margin-bottom: 10px; font-size: 18px; }
+.results-page .results-legend__icon { width: 26px; height: 18px; }
+.results-page .results-row { grid-template-columns: minmax(240px, 0.7fr) 1fr 1fr; gap: 24px; padding: 14px 0; }
+.results-page .results-row__portrait { width: 80px; height: 80px; }
+.results-page .results-row__name { font-size: 24px; }
+.results-page .results-row__summary { font-size: 17px; }
+.results-page .results-row__axis { font-size: 17px; }
+/* Long one-word roles ("(Uddannelsesleder)") must stay in the name column. */
+.results-row__name { overflow-wrap: anywhere; }
+
+/* Narrower projectors (1024 x 768 XGA): a wider name column, a smaller
+   portrait and name, so the longest role fits next to the portrait. */
+@media (max-width: 1300px) {
+  .results-page .results-row { grid-template-columns: minmax(280px, 0.85fr) 1fr 1fr; gap: 20px; }
+  .results-page .results-row__portrait { width: 64px; height: 64px; }
+  .results-page .results-row__name { font-size: 21px; }
+}
+
+@media (max-width: 760px) {
+  .results-row, .results-page .results-row { grid-template-columns: 1fr; }
+}
+
+@media (forced-colors: active) {
+  .results-chart__dot, .results-chart__axis, .results-chart__tick, .results-chart__curve { stroke: CanvasText; }
+  .results-chart__dot--own { fill: Highlight; }
+  .results-chart__middle { fill: none; stroke: Highlight; }
+  .results-chart__middle-edge { stroke: Canvas; }
+  .results-chart text { fill: CanvasText; }
+}

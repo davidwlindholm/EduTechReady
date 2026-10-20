@@ -1,0 +1,22 @@
+{
+  "name": "edutechready",
+  "version": "0.1.0",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "description": "Dev tooling for the EduTechReady teachers' lounge game",
+  "scripts": {
+    "test": "node --test \"tests/unit/**/*.test.mjs\"",
+    "e2e": "playwright test",
+    "serve": "php -S 127.0.0.1:8080 -t public",
+    "vendor": "node scripts/vendor_three.mjs",
+    "validate": "node scripts/validate_content.mjs"
+  },
+  "devDependencies": {
+    "@gltf-transform/cli": "4.5.1",
+    "@gltf-transform/core": "4.5.1",
+    "@playwright/test": "1.64.1",
+    "ajv": "8.20.0",
+    "three": "0.186.1"
+  }
+}

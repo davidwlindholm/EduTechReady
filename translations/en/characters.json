@@ -1,0 +1,300 @@
+{
+  "player": {
+    "model": "char_m4",
+    "materialColors": {}
+  },
+  "characters": [
+    {
+      "id": "mette",
+      "name": "Mette (Lecturer)",
+      "model": "char_w1",
+      "materialColors": {
+        "Shirt": "#4a6a94",
+        "Pants": "#2e3440",
+        "Hair": "#5a3d2b",
+        "HairBase": "#5a3d2b"
+      },
+      "col": 3,
+      "row": 7,
+      "facing": "N",
+      "pose": "sit",
+      "portrait": "assets/portraits/mette.webp",
+      "summary": "Mette has her students hand in reflections on their work placements as voice notes, and gives feedback by voice note.",
+      "greeting": "I've started letting my students hand in their reflections as voice notes instead of written assignments.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "What did that change for the students?",
+          "answer": "The assignment is the same. They still reflect on their placement and hand it in to me. But the dyslexic students in particular say much more than they ever wrote. And I reply with a voice note, so they get feedback faster."
+        },
+        {
+          "id": "q2",
+          "text": "How did you get started with it?",
+          "answer": "I don't jump on everything new. A couple of colleagues on the finance programme had tried it, so I questioned them thoroughly and followed along for a semester. Only then did I start. Today most of the department does it."
+        },
+        {
+          "id": "q3",
+          "text": "Would you go back to the old way?",
+          "answer": "No. Next semester I want to go further and have them listen to each other's voice notes and give each other feedback in pairs. But I haven't tried that yet."
+        }
+      ]
+    },
+    {
+      "id": "jonas",
+      "name": "Jonas (Lecturer)",
+      "model": "char_m1",
+      "materialColors": {
+        "Shirt": "#5e8a4e",
+        "Hair": "#d8b45c",
+        "Pants": "#3f4f66"
+      },
+      "col": 4,
+      "row": 4,
+      "facing": "S",
+      "pose": "sit",
+      "portrait": "assets/portraits/jonas.webp",
+      "summary": "Jonas has turned his lectures into short videos and uses class time for group work with guidance.",
+      "greeting": "I've turned my lectures into short videos that the students watch at home. Then we use class time for something completely different.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "So what do you use class time for?",
+          "answer": "Group work. Before, they sat and listened for two hours and did the exercises alone at home. Now it's the other way round. I walk around and help the ones who are stuck, and they learn a lot from each other."
+        },
+        {
+          "id": "q2",
+          "text": "How have your colleagues received it?",
+          "answer": "Quite well, actually. One colleague tried something similar before me, but gave up. I started four years ago. Now three colleagues have copied my setup, and new lecturers get sent to me."
+        },
+        {
+          "id": "q3",
+          "text": "Do the students actually watch the videos?",
+          "answer": "Most of them do. I start every class with a short quiz, so they know it matters. I also tried it out with one class for a whole semester before I changed all my courses."
+        }
+      ]
+    },
+    {
+      "id": "karim",
+      "name": "Karim (Administration)",
+      "model": "char_m2",
+      "materialColors": {
+        "Skin": "#7d5236",
+        "Shirt": "#6f8fb5",
+        "Hair": "#1f1a17",
+        "Pants": "#3a3a40"
+      },
+      "col": 5,
+      "row": 6,
+      "facing": "W",
+      "pose": "sit",
+      "portrait": "assets/portraits/karim.webp",
+      "summary": "Karim uses AI to draft standard letters and reminders to the students.",
+      "greeting": "I use AI to write our standard letters to the students. Deadline reminders, welcome letters, that sort of thing.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "What has it changed for the students?",
+          "answer": "Nothing, and that's the point. The letters look exactly as before and go out on the same day as always. I just spend an hour on them instead of a whole afternoon."
+        },
+        {
+          "id": "q2",
+          "text": "When did you start doing that?",
+          "answer": "Right after ChatGPT came out. Nobody here had heard of it yet. I follow some international forums on automation, so I often try things out long before the others."
+        },
+        {
+          "id": "q3",
+          "text": "What do your colleagues think of it?",
+          "answer": "I think they see me as a bit of a nerd, and not many come to me for advice. It also goes wrong now and then, like when my first version sent the wrong deadline to 300 students. Then I fix it and try again. But I never put in names or personal data."
+        }
+      ]
+    },
+    {
+      "id": "anne",
+      "name": "Anne (Student Counsellor)",
+      "model": "char_w3",
+      "materialColors": {
+        "Skin": "#7a5236",
+        "Shirt": "#c0587a",
+        "Pants": "#3f5f8a",
+        "Hair": "#1e1714",
+        "HairBase": "#1e1714"
+      },
+      "col": 6,
+      "row": 9,
+      "facing": "N",
+      "pose": "sit",
+      "portrait": "assets/portraits/anne.webp",
+      "summary": "Anne holds counselling sessions over video, including with students on work placement. The first session is always in person.",
+      "greeting": "I hold a lot of my counselling sessions over video now. It suits the students who are on placement.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Isn't it just the same conversation on a screen?",
+          "answer": "The conversation is the same, yes. But now we can share a screen and go through the study plan together. And students on placement can have the session in their lunch break instead of taking half a day off."
+        },
+        {
+          "id": "q2",
+          "text": "When did you start doing that?",
+          "answer": "During Covid we all had to, but afterwards I went straight back to meeting in person. Only last year did I take it up again. Most of the other counsellors had stuck with it, and the students kept asking for it."
+        },
+        {
+          "id": "q3",
+          "text": "Don't you lose something by not meeting?",
+          "answer": "Yes, a little. It's harder to sense when someone is struggling. That's why I always hold the first session face to face. I was sceptical for a long time, and I still am, a little."
+        }
+      ]
+    },
+    {
+      "id": "sofie",
+      "name": "Sofie (Lecturer)",
+      "model": "char_w4",
+      "materialColors": {
+        "Shirt": "#d8cdb9",
+        "Jacket": "#efe6d6",
+        "LightJacket": "#e3d7c3",
+        "Pants": "#2f2f36",
+        "Hair": "#6b4a32",
+        "HairBase": "#6b4a32",
+        "Eyebrows": "#4a3424"
+      },
+      "col": 7,
+      "row": 9,
+      "facing": "N",
+      "pose": "sit",
+      "portrait": "assets/portraits/sofie.webp",
+      "summary": "Sofie puts her course packs on the learning platform as scanned PDFs, because it is now a requirement.",
+      "greeting": "I'm rather sceptical of all the new tools. But this year I've put my course packs on the learning platform, because now it's a requirement.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "How do you use the platform?",
+          "answer": "I scan my paper course packs and upload them as PDFs. The students print them or read them on screen. Otherwise everything is as before, and I'm quite happy with that."
+        },
+        {
+          "id": "q2",
+          "text": "Why did you wait so long?",
+          "answer": "I've been here for 22 years and seen three platforms come and go. Each time, someone lost their materials. My paper course packs have outlived them all. I'm probably the last in the department to come on board."
+        },
+        {
+          "id": "q3",
+          "text": "Could you imagine trying more?",
+          "answer": "If a colleague can show me that it actually helps the students. I once tried a polling tool that crashed in the middle of class. And I still believe they learn most when they write by hand and talk to each other."
+        }
+      ]
+    },
+    {
+      "id": "lars",
+      "name": "Lars (IT)",
+      "model": "char_m3",
+      "materialColors": {
+        "Shirt": "#55704a",
+        "Shirt2": "#55704a",
+        "Pants": "#a38f68",
+        "Hair": "#5a3f2c",
+        "Hair2": "#5a3f2c"
+      },
+      "col": 9,
+      "row": 5,
+      "facing": "N",
+      "pose": "stand",
+      "portrait": "assets/portraits/lars.webp",
+      "summary": "Lars has set up an AI chatbot that answers students' IT questions based on the school's own guides.",
+      "greeting": "The coffee machine is the only machine here that never gets updates. On the other hand, we've just got an AI chatbot that answers students' IT questions.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "What does the chatbot do?",
+          "answer": "It answers the routine questions around the clock, based on our own guides, so I only take the difficult cases. Every week I read what the students have asked about and fix the guides where they get stuck."
+        },
+        {
+          "id": "q2",
+          "text": "Weren't you the first here to use AI?",
+          "answer": "Quite the opposite. Half the lecturers had used AI for over a year before I touched it. I wanted to wait for an approved solution with proper data protection. And I've seen too many hyped tools disappear again."
+        },
+        {
+          "id": "q3",
+          "text": "What made you do it after all?",
+          "answer": "Management asked, and by then most people here were using AI without problems. So there was no longer any good reason to wait. Now I'm actually quite pleased with it."
+        }
+      ]
+    },
+    {
+      "id": "birgitte",
+      "name": "Birgitte (Head of Programme)",
+      "model": "char_w2",
+      "materialColors": {
+        "Dress": "#7d4646",
+        "Hair": "#8a5a3a"
+      },
+      "col": 6,
+      "row": 2,
+      "facing": "S",
+      "pose": "stand",
+      "portrait": "assets/portraits/birgitte.webp",
+      "summary": "Birgitte has set up a collaboration in which marketing students work online with a class in Vietnam on a company case.",
+      "greeting": "Ask away, but I'm off to a meeting in a moment. Our marketing students now work online with a class in Vietnam on the same company case.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "How does the collaboration work?",
+          "answer": "They work in shared documents and meet on video every week. At the end they present their proposals to the company's management online. Suddenly they have to explain their ideas to people who see the market completely differently."
+        },
+        {
+          "id": "q2",
+          "text": "Were you the first to do it?",
+          "answer": "No. Two of the other programmes here had been running it for a couple of years. I went to see how they did it and read their evaluations before we started with one class. Since then more programmes have followed."
+        },
+        {
+          "id": "q3",
+          "text": "What has it meant for the students?",
+          "answer": "They learn something we could never teach them in a classroom in Denmark. They mention it in every single evaluation. But it asks a lot of the lecturers, so I've given them extra hours for it."
+        }
+      ]
+    },
+    {
+      "id": "henrik",
+      "name": "Henrik (Educational Consultant)",
+      "model": "char_m3",
+      "materialColors": {
+        "Shirt": "#c79a3a",
+        "Shirt2": "#c79a3a",
+        "Pants": "#40444c",
+        "Hair": "#a8a59e",
+        "Hair2": "#a8a59e",
+        "Shoes": "#2b2622"
+      },
+      "col": 8,
+      "row": 1,
+      "facing": "W",
+      "pose": "stand",
+      "portrait": "assets/portraits/henrik.webp",
+      "summary": "Henrik has helped a class use an AI that plays the managing director of the case company, so the students can interview it.",
+      "greeting": "Hi! I'm waiting for a meeting, but ask away. Right now I'm helping a class with an AI that plays the managing director of the company they're writing their assignment about.",
+      "maxQuestions": null,
+      "questions": [
+        {
+          "id": "q1",
+          "text": "What do the students do with it?",
+          "answer": "They interview it as if they had the managing director on the phone. It answers based on the annual report and the company's website. You simply couldn't do that before. They're incredibly engaged; some sit asking questions for hours."
+        },
+        {
+          "id": "q2",
+          "text": "How did you get started with AI?",
+          "answer": "Karim showed it to me a couple of months after ChatGPT first came out, and I got going quickly. Now I run workshops on it, and colleagues often drop by and ask me before they try something new themselves."
+        },
+        {
+          "id": "q3",
+          "text": "Are there any downsides?",
+          "answer": "Yes, and I think about them a lot. It sometimes makes things up. One group built half their assignment on a factory the company doesn't even have. And some no longer read the annual report; they just ask the bot."
+        }
+      ]
+    }
+  ]
+}

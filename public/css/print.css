@@ -1,0 +1,65 @@
+/* Print and "Gem som PDF" for results.html: A4 portrait, dark
+   text on white, no buttons, and no character row split across pages. The
+   charts keep their shapes; only the colours change, so they still look like
+   the SAMR and Rogers panels. */
+
+@page {
+  size: A4 portrait;
+  margin: 12mm 12mm 14mm;
+}
+
+html, html:has(body.results-page), body.results-page {
+  height: auto;
+  overflow: visible;
+  background: #ffffff;
+  color: #1d1b18;
+}
+body.results-page { font-size: 10pt; }
+
+.results-page__main { max-width: none; padding: 0; }
+.results-page__actions, .results-page__auto { display: none !important; }
+
+.results-page__header { gap: 2mm 8mm; margin-bottom: 3mm; align-items: flex-end; }
+.results-page__title { color: #1d1b18; font-size: 17pt; }
+.results-page__session, .results-page__status .results__updated { color: #4a463f; font-size: 10pt; }
+.results-page__status .results__count { font-size: 13pt; }
+.results__problem { background: none; border-left-color: #b4482d; }
+
+.results-page .results-legend { color: #3a3732; font-size: 9pt; margin-bottom: 2mm; }
+.results-page .results-legend__icon { width: 18px; height: 13px; }
+
+/* Rows: the person across the top, the two charts side by side below. Never
+   split one character across two pages; a page break falls between rows. */
+.results-page .results-row {
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5mm 6mm;
+  padding: 2.5mm 0;
+  border-top: 0.3mm solid #b9b2a4;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.results-page .results-row__who { grid-column: 1 / -1; align-items: center; gap: 3mm; }
+.results-page .results-row__portrait { width: 10mm; height: 10mm; border: 0.3mm solid #b9b2a4; background: #f1ede5; }
+.results-page .results-row__name { margin: 0; color: #1d1b18; font-size: 11pt; }
+.results-page .results-row__summary { color: #4a463f; font-size: 8.5pt; }
+.results-page .results-row__axis { font-size: 8.5pt; }
+
+/* Charts in print colours. */
+.results-chart__bracket-label { fill: #1d1b18; }
+.results-chart__bracket { stroke: #6e6656; }
+.results-chart__band-bg--odd { fill: #f4f1ea; }
+.results-chart__band-bg--even { fill: #e8e3d8; }
+.results-chart__divider { stroke: #b9b2a4; }
+.results-chart__band-label, .results-chart__tick-label { fill: #4a463f; }
+.results-chart__share { fill: #1d1b18; }
+.results-chart__region { fill: #c9d3df; }
+.results-chart__region--1, .results-chart__region--3 { fill: #b3c0cf; }
+.results-chart__region--2 { fill: #9eaec1; }
+.results-chart__curve { stroke: #5d6f86; }
+.results-chart__axis, .results-chart__tick { stroke: #1d1b18; }
+.results-chart__middle { fill: rgba(92, 158, 60, 0.22); stroke: #2f6a18; }
+.results-chart__middle-edge { stroke: #ffffff; }
+.results-chart__dot { fill: #ffffff; stroke: #1d1b18; }
+.results-chart__dot--own { fill: #f0b54a; }
+
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
